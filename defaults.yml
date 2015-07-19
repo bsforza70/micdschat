@@ -10,7 +10,7 @@ http:
   port: 5000
 
 https:
-  enable: true
+  enable: false
   host:
   port: 5001
   key: key.pem
