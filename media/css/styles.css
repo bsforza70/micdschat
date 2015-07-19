@@ -2,3 +2,27 @@
 	font-family: 'Raleway', sans-serif !important;
 	font-weight: 900;
 }
+.lcb-pane {
+   margin: 0px !important; 
+   border: 0px !important; 
+   border-radius: 0px !important; 
+}
+.lcb-sidebar {
+	background: #c0392b !important;
+	border-right: 1px #d73c2c solid !important;
+}
+.lcb-tab.selected {
+	background: #fff !important;
+}
+.lcb-tab.selected a {
+	color: white !important; 
+}
+.lcb-account-button {
+	color: #efefef !important;
+}
+.lcb-sidebar:after {
+	background: transparent !important;
+}
+.lcb-tabs {
+	border: none !important;
+}
