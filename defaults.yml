@@ -10,7 +10,7 @@ http:
   port: 5000
 
 https:
-  enable: false
+  enable: true
   host:
   port: 5001
   key: key.pem
@@ -37,7 +37,7 @@ secrets:
   cookie: secretsauce
 
 files:
-  enable: false
+  enable: true
   provider: local
   maxFileSize: 100000000
   restrictTypes: true
@@ -58,7 +58,7 @@ auth:
     passwordRegex: ^.{8,64}$
 
 private:
-  enable: false
+  enable: true
   roster: online # online / all
   expire: 360 # false or number of minutes
 
@@ -71,7 +71,7 @@ giphy:
   apiKey: dc6zaTOxFJmzC
 
 rooms:
-  private: false
+  private: true
 
 i18n:
   locale: en
