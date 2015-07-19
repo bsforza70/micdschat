@@ -10,7 +10,7 @@ function UserMessageManager(options) {
 
 // options.currentUser, options.user
 
-UserMessageManager.prototype.onMessageCreated = function(message, user, options, cb) {
+UserMessageManager.prototype.onMessageCreated = function(message, user, cb) {
     var User = mongoose.model('User');
 
     User.findOne(message.owner, function(err, owner) {
@@ -22,7 +22,7 @@ UserMessageManager.prototype.onMessageCreated = function(message, user, options,
             cb(null, message, user, owner);
         }
 
-        this.core.emit('user-messages:new', message, user, owner, options.data);
+        this.core.emit('user-messages:new', message, user, owner);
     }.bind(this));
 };
 
@@ -50,14 +50,14 @@ UserMessageManager.prototype.create = function(options, cb) {
         // Test if this message is OTR
         if (data.text.match(/^\?OTR/)) {
             message._id = 'OTR';
-            this.onMessageCreated(message, user, options, cb);
+            this.onMessageCreated(message, user, cb);
         } else {
             message.save(function(err) {
                 if (err) {
                     console.error(err);
                     return cb(err);
                 }
-                this.onMessageCreated(message, user, options, cb);
+                this.onMessageCreated(message, user, cb);
             }.bind(this));
         }
     }.bind(this));

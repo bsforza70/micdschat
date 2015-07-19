@@ -6,7 +6,6 @@
 
 var _ = require('lodash'),
     fs = require('fs'),
-    psjon = require('./../../package.json'),
     auth = require('./../auth/index'),
     path = require('path'),
     settings = require('./../config');
@@ -27,8 +26,7 @@ module.exports = function() {
     app.get('/', middlewares.requireLogin.redirect, function(req, res) {
         res.render('chat.html', {
             account: req.user,
-            settings: settings,
-            version: psjon.version
+            settings: settings
         });
     });
 
@@ -50,6 +48,14 @@ module.exports = function() {
     });
 
     app.post('/account/login', function(req) {
+        req.io.route('account:login');
+    });
+
+    app.get('/account/:provider/login', function(req) {
+        req.io.route('account:login');
+    });
+
+    app.get('/account/:provider/callback', function(req) {
         req.io.route('account:login');
     });
 
@@ -75,6 +81,19 @@ module.exports = function() {
 
     app.post('/account/token/revoke', middlewares.requireLogin, function(req) {
         req.io.route('account:revoke_token');
+    });
+
+    // Validate provider
+    app.param('provider', function(req, res, next, provider) {
+        if (provider in auth.providers) {
+            next();
+        }
+        else {
+            return res.status(400).json({
+                status: 'error',
+                message: 'provider is not supported'
+            });
+        }
     });
 
     //
@@ -128,8 +147,7 @@ module.exports = function() {
                         form.confirmPassword
                 };
 
-            auth.authenticate(req, req.user.uid || req.user.username,
-                              data.currentPassword, function(err, user) {
+            auth.authenticate(req, res, function(err, user) {
                 if (err) {
                     return res.status(400).json({
                         status: 'error',
@@ -272,7 +290,14 @@ module.exports = function() {
             });
         },
         login: function(req, res) {
-            auth.authenticate(req, function(err, user, info) {
+            var isSSO = false;
+            var provider = req.params.provider;
+
+            if (provider) {
+                isSSO = true;
+            }
+
+            function authCallback(err, user, info) {
                 if (err) {
                     return res.status(400).json({
                         status: 'error',
@@ -314,13 +339,27 @@ module.exports = function() {
                             });
                         }
                         req.session.passport = temp;
-                        res.json({
-                            status: 'success',
-                            message: 'Logging you in...'
-                        });
+
+                        if (isSSO) {
+                            res.redirect('/');
+                        }
+                        else {
+                            res.json({
+                                status: 'success',
+                                message: 'Logging you in...'
+                            });
+                        }
+
                     });
                 });
-            });
+            }
+
+            if (provider) {
+                auth.authenticateProvider(provider, req, res, authCallback);
+            }
+            else {
+                auth.authenticate(req, res, authCallback);
+            }
         }
     });
 };

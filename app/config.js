@@ -34,12 +34,8 @@ var pipeline = [
     },
 
     function getFileSettings(context) {
-        var file;
-        if (fs.existsSync('config/settings.yml')) {
-            file = fs.readFileSync('config/settings.yml', 'utf8');
-            context.file = yaml.safeLoad(file) || {};
-        } else if (fs.existsSync('settings.yml')) {
-            file = fs.readFileSync('settings.yml', 'utf8');
+        if (fs.existsSync('settings.yml')) {
+            var file = fs.readFileSync('settings.yml', 'utf8');
             context.file = yaml.safeLoad(file) || {};
         } else {
             context.file = {};

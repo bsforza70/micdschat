@@ -103,7 +103,7 @@
 
             // Fragment or new message?
             message.fragment = this.lastMessageOwner === message.owner.id &&
-                            posted.diff(this.lastMessagePosted, 'minutes') < 2;
+                            posted.diff(this.lastMessagePosted, 'minutes') < 5;
 
             // Templatin' time
             var $html = $(this.messageTemplate(message).trim());
@@ -113,11 +113,8 @@
 
             this.formatTimestamp($html.find('time'));
             this.$messages.append($html);
-
-            if (!message.fragment) {
-                this.lastMessageOwner = message.owner.id;
-                this.lastMessagePosted = posted;
-            }
+            this.lastMessageOwner = message.owner.id;
+            this.lastMessagePosted = posted;
         },
         formatMessage: function(text) {
             return window.utils.message.format(text, this.formatData);

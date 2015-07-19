@@ -1,6 +1,6 @@
 # Support / Issues
 
-Please [open an issue](https://github.com/sdelements/lets-chat/issues/new) for support and questions.
+Please use our [mailing list][mailing-list] for support issues and questions.
 
 
 # Contributing to Let's Chat
@@ -25,7 +25,8 @@ The [issue tracker][tracker] is the preferred channel for [bug reports](#bug-rep
 but please respect the following restrictions:
 
 
-* Please provide as much details about the problem you are encountering (platform, version on node/npm/mongo, etc)
+* Please **do not** use the issue tracker for personal support requests,
+  instead use our [mailing list][mailing-list].
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -107,4 +108,5 @@ By contributing your code, you agree to license your contribution under the
 
 
 [labels]: https://github.com/sdelements/lets-chat/labels
+[mailing-list]: https://groups.google.com/forum/#!forum/lets-chat-app
 [tracker]: https://github.com/sdelements/lets-chat/issues

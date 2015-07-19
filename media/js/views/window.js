@@ -154,10 +154,8 @@
             view && view.toggleSidebar && view.toggleSidebar();
         },
         openGiphyModal: function(e) {
-            if (this.client.options.giphyEnabled) {
-                e.preventDefault();
-                $('.lcb-giphy').modal('show');
-            }
+            e.preventDefault();
+            $('.lcb-giphy').modal('show');
         }
     });
 

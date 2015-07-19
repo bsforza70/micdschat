@@ -57,7 +57,7 @@ if (typeof exports !== 'undefined') {
 
     function mentions(text) {
         var mentionPattern = /\B@([\w\.]+)(?!@)\b/g;
-        return text.replace(mentionPattern, '<span class="lcb-message-mention">@$1</span>');
+        return text.replace(mentionPattern, '<strong>@$1</strong>');
     }
 
     function roomLinks(text, data) {

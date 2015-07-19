@@ -8,7 +8,7 @@ module.exports = EventListener.extend({
 
     on: 'user-messages:new',
 
-    then: function(msg, user, owner, data) {
+    then: function(msg, user, owner) {
         if (!settings.private.enable) {
             return;
         }
@@ -19,10 +19,6 @@ module.exports = EventListener.extend({
         });
 
         connections.forEach(function(connection) {
-            var id = msg._id;
-            if (connection.user.username === user.username) {
-                id = data && data.id || id;
-            }
 
             var stanza = new Stanza.Message({
                 id: msg._id,
