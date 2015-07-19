@@ -2,7 +2,7 @@
 # Let's Chat Built-in Defaults
 #
 
-env: development # development / production
+env: production # development / production
 
 http:
   enable: true
@@ -40,7 +40,7 @@ files:
   enable: true
   provider: local
   maxFileSize: 100000000
-  restrictTypes: true
+  restrictTypes: false
   allowedTypes:
     - 'image/jpeg'
     - 'image/png'
