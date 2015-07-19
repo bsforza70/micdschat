@@ -34,3 +34,11 @@ body {
 	font-family: 'Raleway', sans-serif !important;
 	font-weight: 400;
 }
+.btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+	background-color: #B51C1C !important;
+	border-color: transparent !important;
+}
+.btn-success {
+	background-color: #B51C1C !important;
+	border-color: transparent !important;
+}
