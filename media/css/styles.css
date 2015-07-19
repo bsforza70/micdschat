@@ -17,6 +17,9 @@
 .lcb-tab.selected a {
 	color: white !important; 
 }
+.lcb-tab a {
+	color: white !important;
+}
 .lcb-account-button {
 	color: #efefef !important;
 	background: #9E3024 !important;
@@ -41,4 +44,15 @@ body {
 .btn-success {
 	background-color: #B51C1C !important;
 	border-color: transparent !important;
-	}
+}
+.dropdown-menu>li>a {
+	padding: 10px 20px !important;
+}
+.btn-info {
+	background-color: #B51C1C !important;
+	border-color: transparent !important;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+	background-color: #B51C1C !important;
+	border-color: transparent !important;
+}
