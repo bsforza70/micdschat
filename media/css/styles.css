@@ -12,17 +12,25 @@
 	border-right: 1px #d73c2c solid !important;
 }
 .lcb-tab.selected {
-	background: #fff !important;
+	background: #000 !important;
 }
 .lcb-tab.selected a {
 	color: white !important; 
 }
 .lcb-account-button {
 	color: #efefef !important;
+	background: #9E3024 !important;
 }
 .lcb-sidebar:after {
 	background: transparent !important;
 }
 .lcb-tabs {
 	border: none !important;
+}
+.lcb-account-button:focus {
+	background: #8E2014 !important;
+}
+body {
+	font-family: 'Raleway', sans-serif !important;
+	font-weight: 400;
 }
